@@ -1,30 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dor Baram | Contact</title>
+  <!-- Favicon & theme color -->
+  <link rel="icon" href="favicon.ico">
+  <meta name="theme-color" content="#121212">
+  <!-- AOS Animation Library -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
-    /* Dark theme styling */
+    /* Theme variables */
+    :root {
+      --bg: #121212;
+      --card-bg: #1e1e1e;
+      --text: #e0e0e0;
+      --accent: #bb86fc;
+      --subaccent: #03dac6;
+      --button-bg: #03dac6;
+      --button-text: #121212;
+    }
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --card-bg: #f5f5f5;
+      --text: #121212;
+      --accent: #6200ee;
+      --subaccent: #018786;
+      --button-bg: #018786;
+      --button-text: #ffffff;
+    }
+    /* Global styling */
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background-color: #121212;
-      color: #e0e0e0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+        Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
       padding: 20px;
+      transition: background-color 0.3s, color 0.3s;
     }
     .container {
       max-width: 600px;
       width: 100%;
       padding: 30px;
-      background-color: #1e1e1e;
+      background-color: var(--card-bg);
       border-radius: 10px;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
       text-align: center;
+      transition: background-color 0.3s;
+    }
+    .theme-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+    }
+    .theme-switcher input {
+      display: none;
+    }
+    .theme-switcher label {
+      cursor: pointer;
+      font-size: 1.5em;
+      user-select: none;
     }
     .avatar-link {
       display: inline-block;
@@ -41,13 +81,15 @@
     h1 {
       margin-top: 0;
       font-size: 2em;
-      color: #bb86fc;
+      color: var(--accent);
+      transition: color 0.3s;
     }
     h2 {
       margin-bottom: 10px;
       font-size: 1.2em;
       font-weight: normal;
-      color: #03dac6;
+      color: var(--subaccent);
+      transition: color 0.3s;
     }
     p {
       line-height: 1.6;
@@ -63,30 +105,81 @@
       margin-bottom: 10px;
     }
     a {
-      color: #bb86fc;
+      color: var(--accent);
       text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
     }
+    .whatsapp-button,
+    .resume-button {
+      display: inline-block;
+      margin: 10px 5px;
+      padding: 10px 20px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: opacity 0.2s;
+    }
+    .whatsapp-button:hover,
+    .resume-button:hover {
+      opacity: 0.8;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
+  <!-- Theme Toggle -->
+  <div class="theme-switcher">
+    <input type="checkbox" id="theme-toggle">
+    <label for="theme-toggle" id="theme-icon">🌙</label>
+  </div>
+
+  <div class="container" data-aos="fade-up">
     <a class="avatar-link" href="https://www.linkedin.com/in/dor-baram/" target="_blank" rel="noopener">
       <img class="avatar" src="https://media.licdn.com/dms/image/v2/D4E35AQGNbmWt3PnPug/profile-framedphoto-shrink_400_400/B4EZV26upeG0Ac-/0/1741456862084?e=1749114000&v=beta&t=Bpag0kR1U2eM2NWQ462k7R65Od6fmGJ0357ifO-rGmA" alt="Dor Baram Profile Photo">
     </a>
-    <h1>Dor Baram</h1>
-    <h2>Junior DevOps &amp; Junior Developer | B.Sc. Computer Science</h2>
-    <p>Hi there,</p>
-    <p>My name is Dor Baram, a B.Sc. graduate in Computer Science with one year of experience in software development and DevOps. I am seeking my next challenge in infrastructure and development and am confident that my experience can contribute to your team.</p>
-    
-    <ul class="contact-list">
+    <h1 data-aos="fade-up" data-aos-delay="100">Dor Baram</h1>
+    <h2 data-aos="fade-up" data-aos-delay="200">Junior DevOps &amp; Junior Developer | B.Sc. Computer Science</h2>
+    <p data-aos="fade-up" data-aos-delay="300">Hi there,</p>
+    <p data-aos="fade-up" data-aos-delay="400">My name is Dor Baram, a B.Sc. graduate in Computer Science with one year of experience in software development and DevOps. I am seeking my next challenge in infrastructure and development and am confident that my experience can contribute to your team.</p>
+    <p data-aos="fade-up" data-aos-delay="500">Please find my résumé attached for your review. I would welcome the opportunity to schedule a brief call to discuss potential openings.</p>
+
+    <a class="resume-button" href="Dor%20Baram%20Resume.pdf" download="Dor Baram Resume.pdf">Download Résumé</a>
+    <a class="whatsapp-button" href="https://wa.me/972526926466?text=Hi%20Dor%20Baram!" target="_blank">Chat on WhatsApp</a>
+
+    <ul class="contact-list" data-aos="fade-up" data-aos-delay="600">
       <li><strong>Email:</strong> <a href="mailto:DorBaram@gmail.com">DorBaram@gmail.com</a></li>
       <li><strong>Mobile:</strong> <a href="tel:+972526926466">+972 52-692-6466</a></li>
       <li><strong>Location:</strong> Yokneam, Haifa District, Israel</li>
       <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/dor-baram/" target="_blank" rel="noopener">linkedin.com/in/dor-baram</a></li>
     </ul>
   </div>
+
+  <!-- AOS Script & Theme Toggle Logic -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+    const current = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', current);
+    if (current === 'light') toggle.checked = true, icon.textContent = '☀️';
+
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        icon.textContent = '☀️';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        icon.textContent = '🌙';
+      }
+    });
+  </script>
 </body>
 </html>
